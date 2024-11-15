@@ -1,0 +1,13 @@
+<div>
+  <div class='container d-flex flex-column justify-content-center gap-4'>
+    <% @lists.each do |list| %>
+    <%= link_to list.name, list_path(list), class: 'text-decoration-none text-dark' %>
+    <% end %>
+
+    <div>
+      <%= link_to new_list_path do %>
+        <button type="button" class="btn btn-warning">Créer</button>
+      <% end %>
+    </div>
+  </div>
+</div>

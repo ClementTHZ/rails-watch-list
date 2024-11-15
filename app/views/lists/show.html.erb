@@ -1,0 +1,33 @@
+<div class='container d-flex flex-column gap-3'>
+  <h1><%= @list.name %></h1>
+
+  <div class='row gap-1'>
+    <% @list.bookmarks.each do |bookmark| %>
+      <div class="row col-6 d-flex shadow w-50">
+
+          <img src="<%= bookmark.movie.poster_url%>" alt="img" width='100px'>
+
+          <div class='d-flex flex-column gap-1 w-50'>
+            <p><%= bookmark.movie.title %></p>
+            <p><%= bookmark.comment %></p>
+            <%= link_to "delete", bookmark_path(bookmark), data: { turbo_method: :delete } %>
+          </div>
+
+      </div>
+    <% end %>
+  </div>
+
+  <div class='container d-flex flex-column gap-3'>
+
+    <%= simple_form_for([@list, @bookmark]) do |f| %>
+      <%= f.input :comment %>
+      <%= f.association :movie %>
+      <%= f.button :submit, "Add movie", class: 'btn btn-warning' %>
+    <% end %>
+
+    <%= link_to lists_path(@list) do %>
+    <button type="button" class="btn btn-warning">back</button>
+    <% end %>
+
+  </div>
+</div>
