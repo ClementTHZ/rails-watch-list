@@ -1,13 +1,24 @@
-<div>
-  <div class='container d-flex flex-column justify-content-center gap-4'>
-    <% @lists.each do |list| %>
-    <%= link_to list.name, list_path(list), class: 'text-decoration-none text-dark' %>
-    <% end %>
+<div class='container d-flex flex-column justify-content-center gap-4'>
 
-    <div>
-      <%= link_to new_list_path do %>
-        <button type="button" class="btn btn-warning">Créer</button>
-      <% end %>
+  <div class="row mt-4">
+    <% @lists.each do |list| %>
+    <div class='col-4 mb-3'>
+      <div class="card shadow">
+        <img class="card-img-top" src="https://proxymedia.woopic.com/api/v1/images/331%2FINSEPARABLEW0156625_BAN1_2424_NEWTV.jpg" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title"><%= list.name %></h5>
+          <p class="card-text"><%= list.movies.count %></p>
+          <%= link_to 'Show List', list_path(list), class: 'btn btn-warning' %>
+        </div>
+      </div>
     </div>
+    <% end %>
   </div>
+
+  <div>
+    <%= link_to new_list_path do %>
+      <button type="button" class="btn btn-warning w-100">Créer</button>
+    <% end %>
+  </div>
+
 </div>
